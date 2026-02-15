@@ -7,7 +7,6 @@ pluginManagement {
         maven("https://maven.kikugie.dev/snapshots")
         maven("https://maven.fabricmc.net/")
         maven("https://maven.architectury.dev")
-        maven("https://maven.minecraftforge.net")
         maven("https://maven.neoforged.net/releases/")
     }
 }
@@ -21,13 +20,20 @@ stonecutter {
     kotlinController = true
     shared {
         fun mc(version: String, vararg loaders: String) {
-            // Make the relevant version directories named "1.20.2-fabric", "1.20.2-forge", etc.
-            for (it in loaders) version("$version-$it", version)
+            for (loader in loaders) vers("$version-$loader", version)
         }
 
+        mc("1.21.1", "fabric", "neoforge")
         mc("1.21.4", "fabric", "neoforge")
+        mc("1.21.6", "fabric", "neoforge")
+        mc("1.21.7", "fabric", "neoforge")
+        mc("1.21.8", "fabric", "neoforge")
+        mc("1.21.9", "fabric", "neoforge")
+        mc("1.21.10", "fabric", "neoforge")
+        mc("1.21.11", "fabric", "neoforge")
 
-        vcsVersion = "1.21.4-fabric"
+        // pick one as your active editing version
+        vcsVersion = "1.21.11-fabric"
     }
     create(rootProject)
 }
